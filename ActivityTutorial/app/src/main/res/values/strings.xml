@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Activity Tutorial</string>
+    <string name="main_select_person">Select a person:</string>
+</resources>
