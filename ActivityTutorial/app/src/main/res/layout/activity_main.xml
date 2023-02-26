@@ -16,23 +16,38 @@
         android:text="@string/main_select_person" />
 
     <RadioGroup
-        android:id="@+id/radioGroup1"
+        android:id="@+id/radioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioButtonBDMendes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
-
+            android:text="@string/main_select_person_bdmendes" />
         <RadioButton
-            android:id="@+id/radioButton1"
+            android:id="@+id/radioButtonSirze"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
-
+            android:text="@string/main_select_person_sirze" />
+        <RadioButton
+            android:id="@+id/radioButtonNando"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_select_person_nando" />
+        <RadioButton
+            android:id="@+id/radioButtonBCGomes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_select_person_bcgomes" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/selectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="sele"
+        android:text="@string/main_select_person_button" />
 
 </LinearLayout>

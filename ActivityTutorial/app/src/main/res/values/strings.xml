@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Activity Tutorial</string>
     <string name="main_select_person">Select a person:</string>
+    <string name="main_select_person_bdmendes">Bruno Mendes</string>
+    <string name="main_select_person_sirze">José Costa</string>
+    <string name="main_select_person_bcgomes">Bruno Gomes</string>
+    <string name="main_select_person_nando">Fernando Rego</string>
+    <string name="main_select_person_button">View Person</string>
 </resources>
