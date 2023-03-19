@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Todo List</string>
+    <string name="add_new_task_action">Add new task</string>
+    <string name="add_notes">Add notes</string>
+    <string name="remove_task">Remove task</string>
+    <string name="due">Due</string>
+    <string name="done">Done</string>
+    <string name="task_name">Task Name</string>
+    <string name="due_date">Due Date</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="notes">Notes</string>
+    <string name="no_tasks_around_here">No tasks around here.</string>
+    <string name="high">High</string>
+    <string name="medium">Medium</string>
+    <string name="low">Low</string>
+    <string name="priority">Priority</string>
+    <string name="done_date">Done Date</string>
+</resources>

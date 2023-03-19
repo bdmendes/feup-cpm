@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/todo_context_add_notes"
+        android:title="@string/add_notes" />
+
+    <item
+        android:id="@+id/todo_context_remove_task"
+        android:title="@string/remove_task" />
+</menu>
