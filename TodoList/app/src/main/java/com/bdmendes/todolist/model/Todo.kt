@@ -5,6 +5,7 @@ import java.time.LocalDate
 enum class Priority { HIGH, MEDIUM, LOW }
 
 data class Todo(
+    var id: Long? = null,
     var title: String,
     var description: String,
     var priority: Priority = Priority.LOW,

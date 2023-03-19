@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter
 import com.bdmendes.todolist.R
 import com.bdmendes.todolist.model.Priority
 import com.bdmendes.todolist.model.Todo
-import com.bdmendes.todolist.repository.todoRepository
+import com.bdmendes.todolist.repository.TodoRepository
 import java.time.LocalDate
 
 class TodoAdapter(context: Context, val todos: List<Todo>) :
@@ -54,6 +54,7 @@ class TodoAdapter(context: Context, val todos: List<Todo>) :
 
         view.findViewById<androidx.appcompat.widget.AppCompatImageView>(R.id.task_edit)
             .setOnClickListener {
+                val todoRepository = TodoRepository.getInstance(context)
                 todoRepository.selectedTodo = todo
                 println("Selected todo: ${todoRepository.selectedTodo}")
                 val intent = android.content.Intent(

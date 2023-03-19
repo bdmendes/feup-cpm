@@ -7,7 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bdmendes.todolist.model.Todo
-import com.bdmendes.todolist.repository.todoRepository
+import com.bdmendes.todolist.repository.TodoRepository
 import com.bdmendes.todolist.view.TodoAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -29,8 +29,15 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_new_task -> {
                 AddTaskDialogFragment.newInstance { taskName, dueDate ->
+                    val todoRepository = TodoRepository.getInstance(this)
+                    val todo = Todo(
+                        title = taskName,
+                        description = "",
+                        dueDate = dueDate
+                    )
+                    todoRepository.add(todo)
                     val adapter = todoListView.adapter as TodoAdapter
-                    adapter.add(Todo(taskName, "", dueDate = dueDate))
+                    adapter.notifyDataSetChanged()
                 }.show(supportFragmentManager, "AddTaskDialogFragment")
             }
         }
@@ -39,15 +46,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         super.onContextItemSelected(item)
+        val todoRepository = TodoRepository.getInstance(this)
         when (item.itemId) {
             R.id.todo_context_add_notes -> {
                 AddNotesDialogFragment.newInstance(todoRepository.selectedTodo?.notes) { notes ->
                     todoRepository.selectedTodo?.notes = notes
+                    todoRepository.update(todoRepository.selectedTodo!!)
+                    val adapter = todoListView.adapter as TodoAdapter
+                    adapter.notifyDataSetChanged()
                 }.show(supportFragmentManager, "AddNotesDialogFragment")
             }
             R.id.todo_context_remove_task -> {
+                todoRepository.delete(todoRepository.selectedTodo!!)
                 val adapter = todoListView.adapter as TodoAdapter
-                adapter.remove(todoRepository.selectedTodo)
+                adapter.notifyDataSetChanged()
             }
         }
         return true
@@ -64,11 +76,12 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         registerForContextMenu(todoListView)
+        val todoRepository = TodoRepository.getInstance(this)
         todoListView.run {
             emptyView = emptyMessage
-            adapter = TodoAdapter(this@MainActivity, todoRepository.todos)
+            adapter = TodoAdapter(this@MainActivity, todoRepository.getAll())
             setOnItemLongClickListener { _, _, pos, _ ->
-                todoRepository.selectedTodo = todoRepository.todos[pos]
+                todoRepository.selectedTodo = todoRepository.getAll()[pos]
                 false
             }
         }

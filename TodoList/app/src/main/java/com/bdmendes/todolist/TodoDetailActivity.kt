@@ -2,8 +2,6 @@ package com.bdmendes.todolist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.bdmendes.todolist.model.Todo
-import com.bdmendes.todolist.repository.todoRepository
 import java.time.LocalDate
 
 class TodoDetailActivity : AppCompatActivity() {
@@ -20,7 +18,7 @@ class TodoDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_todo_detail)
 
-        val oldTodo = todoRepository.selectedTodo
+        val todoRepository = com.bdmendes.todolist.repository.TodoRepository.getInstance(this)
         val todo = todoRepository.selectedTodo!!.copy()
         println("TodoDetailActivity.onCreate: $todo")
 
@@ -50,9 +48,7 @@ class TodoDetailActivity : AppCompatActivity() {
                 if (done.isChecked) java.time.LocalDate.parse(doneDate.text.toString()) else null
             todo.notes = notes.text.toString()
 
-            todoRepository.todos = todoRepository.todos.map {
-                if (it == oldTodo) todo else it
-            } as ArrayList<Todo>
+            todoRepository.update(todo)
 
             finish()
         }
